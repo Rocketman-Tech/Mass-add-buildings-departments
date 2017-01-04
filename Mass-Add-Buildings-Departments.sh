@@ -112,7 +112,7 @@ if [ "$which" = "b" ] || [ "$which" = "B" ]
 		#Grab the building and put it into the building variable
 		building=$(sed -n ${counter}p $file)
 		# Use the api to put the records into the JSS in the appropriate particularce
-		curl -k -H "Content-Type: application/xml" -u ${username}:${password} ${jssurl}/JSSResource/buildings/id/0 -d "<building><name>${building}</name></building>" -X POST
+		curl -k -H "Content-Type: application/xml" -u ${username}:${password} ${jssurl}/JSSResource/buildings/id/0 -d "<building><name>${building//&/&#38;}</name></building>" -X POST
 			# Notes about API:
 			# # -k means allow invalid certificate if you dont have a trusted 3rd party cert.
 			# # -H means header. -H "Content-Type: application/xml" makes it so you don't have to type out the xml header when uploading, e.g. <?xml version="1.0" 
