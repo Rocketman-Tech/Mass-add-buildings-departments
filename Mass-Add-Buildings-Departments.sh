@@ -19,6 +19,8 @@
 #   XML character code, referenced here: 
 #   https://www.dvteclipse.com/documentation/svlinter/How_to_use_special_characters_in_XML.3F.html#gsc.tab=0
 #
+#   UPDATE: Support for "&" characters has been added. 
+#
 ####################################################################################################
 #
 # HISTORY
@@ -134,7 +136,7 @@ if [ "$which" = "d" ] || [ "$which" = "D" ]
 		#Grab the department and put it into the department variable
 		department=$(sed -n ${counter}p $file)
 		# Use the api to put the records into the JSS in the appropriate place
-		curl -k -H "Content-Type: application/xml" -u ${username}:${password} ${jssurl}/JSSResource/departments/id/0 -d "<department><name>${department}</name></department>" -X POST
+		curl -k -H "Content-Type: application/xml" -u ${username}:${password} ${jssurl}/JSSResource/departments/id/0 -d "<department><name>${department//&/&#38;}</name></department>" -X POST
 			# Notes about API:
 			# # -k means allow invalid certificate if you dont have a trusted 3rd party cert.
 			# # -H means header. -H "Content-Type: application/xml" makes it so you don't have to type out the xml header when uploading, e.g. <?xml version="1.0" 
