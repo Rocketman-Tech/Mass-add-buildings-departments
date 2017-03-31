@@ -7,5 +7,7 @@ Update: Support for "&" characters has been added
 
 ## Future Implimentations
 
-* Support for Special Characters
+* Additional support for Special Characters
 * GUI Interface
+* Add a script that exports the information from AD
+  - This might help get me there: https://gallery.technet.microsoft.com/scriptcenter/Powershell-script-to-5edcdaea
